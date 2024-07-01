@@ -16,5 +16,7 @@ recipeRouter.delete('/recipes/:id', deleteRecipe);
 
 recipeRouter.get('/recipes/:id', getSingleRecipe);
 
+// recipeRouter.patch('/recipes/:id', patchRecipeById);
+
 // Export router
 export default recipeRouter;

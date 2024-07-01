@@ -23,4 +23,3 @@ export const postCategory = async (req, res, next) => {
 }
 
 
-// Assignment - Write a function to change the favourite from false to true  
