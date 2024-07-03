@@ -2,8 +2,14 @@ import { CategoryModel } from "../models/category.js";
 
 export const getCategories = async (req, res, next) => {
     try {
+        // Get query params
+        const { limit, skip, filter, fields } = req.query;
         // Get all categories from database
-        const allCategories = await CategoryModel.find();
+        const allCategories = await CategoryModel
+            .find(filter ? JSON.parse(filter) : {})
+            .select(fields ? JSON.parse(fields) : '')
+            .limit(limit ? parseInt(limit) : undefined)
+            .skip(skip ? parseInt(skip) : undefined);
         // Return response
         res.status(200).json(allCategories);
     } catch (error) {
