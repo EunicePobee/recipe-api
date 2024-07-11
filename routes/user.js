@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { register } from "../controllers/user.js";
+import { login, register, profile, logout } from "../controllers/user.js";
 import { checkUserSession } from "../middlewares/auth.js";
 
 
@@ -8,7 +8,13 @@ const userRouter = Router();
 
 
 // Define routes
-userRouter.post('/register', register)
+userRouter.post('/register', register);
+
+userRouter.post('/login', login);
+
+userRouter.post('/logout', checkUserSession, logout);
+
+userRouter.get('/profile', checkUserSession, profile);
 
 
 // Export router

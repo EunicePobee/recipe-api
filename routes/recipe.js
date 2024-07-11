@@ -16,7 +16,7 @@ recipeRouter.post('/recipes', checkUserSession, remoteUpload.single('image'), po
 
 recipeRouter.patch('/recipes/:id', checkUserSession, patchRecipe);
 
-recipeRouter.delete('/recipes/:id', deleteRecipe);
+recipeRouter.delete('/recipes/:id', checkUserSession, deleteRecipe);
 
 recipeRouter.get('/recipes/:id', getSingleRecipe);
 
